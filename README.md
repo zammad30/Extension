@@ -5,17 +5,17 @@ A Chrome extension (Manifest V3) that scrapes business details from **Yelp**, **
 ## Features
 
 - **Three sources** (all listed in the popup's *Source* dropdown and in the dashboard's source filter, even before any data exists)
-  - **Google Maps** — scrapes the results list; **Auto-scroll + scrape all** keeps scrolling until Maps says the list has ended (or stops loading), with a **Stop** button.
-  - **Yelp** — scrapes the search-results cards; optionally opens each business page to read phone, address and website.
-  - **Other website** — returns *every* result it can find on a page (all stories on a news page, directory listings, etc.), not just one. It reads structured data (JSON-LD), `<article>` cards, headings with links, and headline-style links. If the page has none of those, it saves one row for the page itself.
+  - **Google Maps** - scrapes the results list; **Auto-scroll + scrape all** keeps scrolling until Maps says the list has ended (or stops loading), with a **Stop** button.
+  - **Yelp** - scrapes the search-results cards; optionally opens each business page to read phone, address and website.
+  - **Other website** - returns *every* result it can find on a page (all stories on a news page, directory listings, etc.), not just one. It reads structured data (JSON-LD), `<article>` cards, headings with links, and headline-style links. If the page has none of those, it saves one row for the page itself.
 - **Fields captured:** Business Name, Phone Number, Category/Service, Rating, Reviews, Address/Area, Business Link, Site Link (plus Source, Keyword, Location, Date).
 - **"Not Available"** is shown (dashboard, CSV, XLSX, Copy) for any field with no data.
-- **Keyword + Location targeting** — type what and where, pick a source, and it opens the right search page. For *Other website*, enter a URL (or leave it empty to scrape the current tab).
-- **Local storage** — everything is saved in `chrome.storage.local` on your machine. Nothing is sent anywhere.
-- **Dashboard** — a full-page tab with per-source counts, search, filters, a results table, delete/clear, and exports.
-- **Export** — CSV, XLSX (via bundled SheetJS), and Copy (tab-separated, pastes straight into Excel/Sheets).
-- **License gate** — the extension is locked until a valid key is entered (keys are hardcoded, see below).
-- **Dedupe** — duplicate businesses are skipped automatically (matched on name + phone, business link, or name + address).
+- **Keyword + Location targeting** - type what and where, pick a source, and it opens the right search page. For *Other website*, enter a URL (or leave it empty to scrape the current tab).
+- **Local storage** - everything is saved in `chrome.storage.local` on your machine. Nothing is sent anywhere.
+- **Dashboard** - a full-page tab with per-source counts, search, filters, a results table, delete/clear, and exports.
+- **Export** - CSV, XLSX (via bundled SheetJS), and Copy (tab-separated, pastes straight into Excel/Sheets).
+- **License gate** - the extension is locked until a valid key is entered (keys are hardcoded, see below).
+- **Dedupe** - duplicate businesses are skipped automatically (matched on name + phone, business link, or name + address).
 
 ## Install
 
@@ -75,7 +75,7 @@ icons/                 Extension icons
 
 ## Notes & limitations
 
-- **After updating the extension:** reload it in `chrome://extensions` **and refresh (or reopen) any open Maps/Yelp tabs** — open tabs keep running the old scraper. The panel title shows the running version (`v1.1.0`); if it doesn't, the page is still on old code.
+- **After updating the extension:** reload it in `chrome://extensions` **and refresh (or reopen) any open Maps/Yelp tabs** - open tabs keep running the old scraper. The panel title shows the running version (`v1.1.0`); if it doesn't, the page is still on old code.
 - **Re-scraping updates rows:** a business that is already saved gets its phone, address, category, rating etc. refreshed instead of being skipped (the panel shows "updated N"). This repairs rows saved by version 1.0, where the rating ended up in the Address column; leftover Yelp "more"/"Order" rows are removed automatically on the next scrape.
 - **Ads on Maps:** sponsored results are included; their website link is the advertiser's domain, because Google hides the real link behind a tracking redirect.
 - **Yelp** often blocks automated requests (HTTP 403). If it blocks the detail lookups, the extension saves the basic info and shows "Not Available" for phone/address.
