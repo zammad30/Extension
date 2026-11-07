@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Business Scraper",
+  "version": "1.1.0",
+  "description": "Scrape business details from Yelp, Google Maps and websites. Store locally, export to CSV/XLSX.",
+  "permissions": ["storage", "scripting", "activeTab", "tabs", "downloads"],
+  "host_permissions": [
+    "*://*.yelp.com/*",
+    "*://www.google.com/maps/*",
+    "*://maps.google.com/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Business Scraper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.yelp.com/*"],
+      "js": ["content/common.js", "content/yelp.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://www.google.com/maps/*", "*://maps.google.com/*"],
+      "js": ["content/common.js", "content/maps.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

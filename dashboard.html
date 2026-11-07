@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Business Scraper — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- License gate -->
+  <div id="gate" class="gate hidden">
+    <h2>Enter license key</h2>
+    <input id="keyInput" placeholder="License key" />
+    <button id="activateBtn">Activate</button>
+    <div id="gateErr" class="err"></div>
+  </div>
+
+  <!-- App -->
+  <div id="app" class="hidden">
+    <header>
+      <h1>Business Scraper — Dashboard</h1>
+      <div class="counts" id="counts"></div>
+    </header>
+
+    <div class="toolbar">
+      <input type="search" id="search" placeholder="Search name, phone, address…" />
+      <select id="sourceFilter"><option value="">All sources</option></select>
+      <select id="keywordFilter"><option value="">All keywords</option></select>
+      <div class="spacer"></div>
+      <button id="copyBtn" class="secondary">Copy</button>
+      <button id="csvBtn" class="secondary">Export CSV</button>
+      <button id="xlsxBtn" class="secondary">Export XLSX</button>
+      <button id="clearBtn" class="danger">Clear all</button>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th><th>Name</th><th>Phone</th><th>Category</th>
+            <th>Rating</th><th>Reviews</th>
+            <th>Address</th><th>Business Link</th><th>Site Link</th>
+            <th>Source</th><th>Keyword</th><th>Location</th><th>Date</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div id="empty" class="empty hidden">No businesses saved yet.</div>
+    </div>
+  </div>
+
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="license.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

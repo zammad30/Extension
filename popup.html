@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <style>
+    body { width: 300px; margin: 0; font: 14px/1.4 system-ui, sans-serif; color: #111827; }
+    .wrap { padding: 14px; }
+    h1 { font-size: 15px; margin: 0 0 10px; }
+    label { display: block; font-size: 12px; color: #6b7280; margin: 8px 0 3px; }
+    input, select { width: 100%; box-sizing: border-box; padding: 7px 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; }
+    button { width: 100%; padding: 9px; margin-top: 10px; border: 0; border-radius: 6px; background: #2563eb; color: #fff; font-size: 13px; cursor: pointer; }
+    button.secondary { background: #e5e7eb; color: #111827; }
+    .status { font-size: 12px; color: #374151; margin-top: 10px; min-height: 16px; }
+    .hidden { display: none; }
+    .link { font-size: 12px; color: #2563eb; cursor: pointer; margin-top: 10px; text-align: center; }
+    .err { color: #dc2626; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Business Scraper</h1>
+
+    <!-- License gate -->
+    <div id="licenseView" class="hidden">
+      <label>License key</label>
+      <input id="keyInput" placeholder="Enter your license key" />
+      <button id="activateBtn">Activate</button>
+      <div id="licenseStatus" class="status"></div>
+    </div>
+
+    <!-- Main -->
+    <div id="mainView" class="hidden">
+      <label>Source</label>
+      <select id="source">
+        <option value="maps">Google Maps</option>
+        <option value="yelp">Yelp</option>
+        <option value="site">Other website</option>
+      </select>
+
+      <div id="searchFields">
+        <label>Keyword</label>
+        <input id="keyword" placeholder="e.g. plumber" />
+
+        <label>Location</label>
+        <input id="location" placeholder="e.g. Austin, TX" />
+      </div>
+
+      <div id="siteFields" class="hidden">
+        <label>Website URL (leave empty to use the current tab)</label>
+        <input id="siteUrl" placeholder="https://news.google.com" />
+      </div>
+
+      <button id="startBtn">Open search &amp; scrape</button>
+      <button id="siteBtn" class="secondary">Scrape current website</button>
+      <button id="dashBtn" class="secondary">Open dashboard</button>
+
+      <div id="status" class="status"></div>
+      <div id="deactivate" class="link">Deactivate license</div>
+    </div>
+  </div>
+
+  <script src="license.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
